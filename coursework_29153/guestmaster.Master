@@ -1,0 +1,191 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="guestmaster.master.cs" Inherits="coursework_29153.guestmaster" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>MoProf</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    
+    <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/plugins/slick/slick.css" />
+    <link rel="stylesheet" href="assets/plugins/themify-icons/themify-icons.css" />
+    <link rel="stylesheet" href="assets/plugins/animate/animate.css" />
+    <link rel="stylesheet" href="assets/plugins/aos/aos.css" />
+    <link rel="stylesheet" href="assets/plugins/venobox/venobox.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+    <header class="fixed-top header">
+
+        <div class="top-header py-2 bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <strong>MoProf - Find the Perfect Tutor</strong>
+                    </div>
+
+                    <div class="col-lg-6 text-right">
+                        <a href="Login.aspx">Login</a> |
+                        <a href="StudentRegister.aspx">Student Register</a> |
+                        <a href="TutorRegister.aspx">Tutor Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation w-100">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+
+                    <a class="navbar-brand" href="Home.aspx">MoProf
+                    </a>
+
+                    <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="home.aspx">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.aspx">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="subjects.aspx">Subjects</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.aspx">Login</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="tutors.aspx">Tutors</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="studentRegister.aspx">Student Register</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="tutorRegister.aspx">Tutor Register</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.aspx">Contact</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout.aspx">LOGOUT</a>
+                            </li>
+
+                            <% if (Session["role"] != null && Session["role"].ToString() == "Tutor")
+                                { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="tutorprofile.aspx">MY PROFILE</a>
+                            </li>
+                            <% } %>
+
+
+                            <% if (Session["role"] != null && Session["role"].ToString() == "Student")
+                                { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="studentprofile.aspx">MY PROFILE</a>
+                            </li>
+                            <% } %>
+
+                            <% if (Session["role"] != null && Session["role"].ToString() == "Admin")
+                                { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admindashboard.aspx">ADMIN DASHBOARD</a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+
+    </header>
+
+    <form id="form1" runat="server">
+
+         
+        <asp:ContentPlaceHolder
+            ID="ContentPlaceHolder1"
+            runat="server">
+        </asp:ContentPlaceHolder>
+
+            <section class="section-sm bg-gray">
+        <div class="container">
+            <asp:Panel ID="pnlAdvertisement" runat="server" CssClass="card border-0 rounded-0 hover-shadow p-3">
+
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <asp:Image
+                            ID="imgAdvertisement"
+                            runat="server"
+                            CssClass="img-fluid"
+                            AlternateText="Advertisement" />
+                    </div>
+
+                    <div class="col-md-7">
+                        <h4>
+                            <asp:Label ID="lblAdTitle" runat="server"></asp:Label>
+                        </h4>
+
+                        <p>
+                            <asp:Label ID="lblAdText" runat="server"></asp:Label>
+                        </p>
+                    </div>
+
+                    <div class="col-md-2">
+                        <asp:HyperLink
+                            ID="lnkAdvertisement"
+                            runat="server"
+                            CssClass="btn btn-primary btn-sm"
+                            Text="View More">
+                        </asp:HyperLink>
+                    </div>
+                </div>
+
+            </asp:Panel>
+        </div>
+    </section>
+
+
+    </form>
+
+
+    <footer class="bg-dark text-white text-center p-4">
+        <img src="assets/images/logo.png"
+            alt="MoProf Logo"
+            style="height: 200px; margin-bottom: 100px;" />
+
+        <p>© 2026 MoProf - All Rights Reserved</p>
+    </footer>
+
+
+    <script src="assets/plugins/jQuery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/plugins/slick/slick.min.js"></script>
+    <script src="assets/plugins/aos/aos.js"></script>
+    <script src="assets/plugins/venobox/venobox.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>
